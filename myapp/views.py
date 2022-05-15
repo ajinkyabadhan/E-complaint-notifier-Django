@@ -98,7 +98,8 @@ def pred(request):
     for i in glob.glob(pred_path):
         pred_dict[i[i.rfind('/*')+1:]]=prediction(i,transformer,classes)
     
-    pred_output = pred_dict.get('c:/Users/Ram/Desktop/Dataset_Test\\1194960-pothole.jpg')
+    #pred_output = pred_dict.get('c:/Users/Ram/Desktop/Dataset_Test\\111.jpg')
+    pred_output = pred_dict.get('c:/Users/Ram/Desktop/Dataset_Test\\cardboard166.jpg')
     a = {"pred_output":pred_output}
     
     if pred_output == 'pothole':
