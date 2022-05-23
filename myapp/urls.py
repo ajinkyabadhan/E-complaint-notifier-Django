@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp import views
+from myapp.views import imageUploadPage
+
 urlpatterns = [
     path("",views.index, name='home'),
-    path("pred/",views.pred,name='pred')
+    path("pred/",views.pred,name='pred'),
+    path("login/",views.login,name='login'),
+    path("path/",views.imageUploadPage,name='path')
 ]
