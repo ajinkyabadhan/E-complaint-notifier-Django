@@ -97,7 +97,7 @@ a = {}
 
 def pred(request):
     pred_path = 'c:/Users/Ram/Desktop/E-complaint-notifier-Django/images/*'
-    train_path = 'c:/Users/Ram/Desktop/Datasets'
+    train_path = 'c:/Users/Ram/Desktop/E-complaint-notifier-Django/Datasets'
 
     root = pathlib.Path(train_path)
     classes = sorted([j.name.split('/')[-1] for j in root.iterdir()])
