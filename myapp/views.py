@@ -73,12 +73,30 @@ def prediction(img_path, transformer, classes):
     return pred
 
 
+def imageUploadPage(request):
+    context = {}
+    if request.method == "POST":
+        form = imageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            img1 = form.cleaned_data.get("Upload_Image")
+            imageUploadPage.img1 = form.cleaned_data.get("Upload_Image")
+            obj = imageUploadModel.objects.create(
+                img=img1
+            )
+            obj.save()
+            return redirect(pred)
+    else:
+        form = imageUploadForm()
+    context['form'] = form
+    return render(request, "upload.html", context)
+
+
 pred_dict = {}
 a = {}
 
 
 def pred(request):
-    pred_path = 'c:/Users/Ram/Desktop/Dataset_Test/Dataset_Test/*'
+    pred_path = 'c:/Users/Ram/Desktop/E-complaint-notifier-Django/images/*'
     train_path = 'c:/Users/Ram/Desktop/Datasets'
 
     root = pathlib.Path(train_path)
@@ -94,12 +112,10 @@ def pred(request):
 
     for i in glob.glob(pred_path):
         pred_dict[i[i.rfind('/*') + 1:]] = prediction(i, transformer, classes)
-
-    # pred_output = pred_dict.get('c:/Users/Ram/Desktop/E-complaint-notifier-Django/images\\15.jpg')
-    output = pred_dict.get('c:/Users/Ram/Desktop/Dataset_Test/Dataset_Test\\5.jpg')
-
+    path = 'c:/Users/Ram/Desktop/E-complaint-notifier-Django/images\\'
+    path += str(imageUploadPage.img1)
+    output = pred_dict.get(path)
     a = {"output": output}
-
     return render(request, 'pred.html', a)
 
 
@@ -107,31 +123,5 @@ def login(request):
     return render(request, 'upload.html')
 
 
-# def add_comment(request):
-#     ium = imageUploadModel.img.path
-#
-#     a = {"pred_output1": ium}
-#     return render(request, 'pred.html', a)
-
-
 def index(request):
     return render(request, 'index.html')
-
-
-def imageUploadPage(request):
-    context = {}
-    if request.method == "POST":
-        form = imageUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            name = form.cleaned_data.get("name")
-            img = form.cleaned_data.get("geeks_field")
-
-            obj = imageUploadModel.objects.create(
-                title=name,
-                img=img
-            )
-            obj.save()
-    else:
-        form = imageUploadForm()
-    context['form'] = form
-    return render(request, "upload.html", context)
