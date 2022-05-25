@@ -226,6 +226,11 @@ span.psw {
 
 <body class="d-flex flex-column">
 	<!--display flex direction column-->
+
+	<script>
+		alert("Welcome User");
+	</script>
+
 	<header>
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg fixed-top py-0" style="background-color: rgba(0, 0, 0, 0.500);">
@@ -259,90 +264,17 @@ span.psw {
 					clean
 					and keep India clean
 				</p>
-
-				<div>
-					<button onclick="document.getElementById('id01').style.display='block'" type="button" class="btn btn-primary">Login</button>
-					<button onclick="document.getElementById('id02').style.display='block'" type="button" class="btn btn-primary">SignUp</button>
-					<!--success green, primary blue, dark black-->
-				</div>
-
-
-				<!--login button -->
-
-	<div id="id01" class="modal">
-		<form class="modal-content animate" action="/user/" method="post">
-			{% csrf_token %}
-    		<div class="imgcontainer">
-      			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-    		</div>
-
-    		<div class="container">
-      			<label for="uname"><b>Username</b></label>
-      			<input type="text" placeholder="Enter Username" name="uname" required>
-
-      			<label for="psw"><b>Password</b></label>
-      			<input type="password" placeholder="Enter Password" name="psw" required>
-
-
-				<button type="submit">Login</button>
-
-
-				<label>
-        			<input type="checkbox" checked="checked" name="remember"> Remember me
-				</label>
-    		</div>
-
-	  <!-- Cancel Button in login page-->
-    		<div class="container" style="background-color:#f1f1f1">
-      			<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      			<span class="psw">Forgot <a href="#">password?</a></span>
-    		</div>
-  		</form>
-	</div>
-
-
-			<!-- sign in -->
-	<div id="id02" class="modal">
-		<form class="modal-content animate" action="" method="post">
-			{% csrf_token %}
-    		<div class="imgcontainer">
-      			<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-    		</div>
-
-    		<div class="container">
-      			<label for="first"><b>First Name</b></label>
-      			<input type="text" placeholder="Enter First Name" name="fname" required>
-
-      			<label for="last"><b>Last Name</b></label>
-     			<input type="text" placeholder="Enter Last Name" name="lname" required>
-
-      			<label for="email"><b>E-mail</b></label>
-     			<input type="text" placeholder="Enter email" name="email" required><br>
-
-      			<label for="psw"><b>Password</b></label>
-      			<input type="password" placeholder="Enter Password" name="psw" required>
-
-				<button type="submit">Sign in</button>
-      			<label>
-        			<input type="checkbox" checked="checked" name="remember"> Remember me
-      			</label>
-
-    		</div>
-
-
-			 <!-- Cancel Button in signin page-->
-			<div class="container" style="background-color:#f1f1f1">
-      			<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-      			<span class="psw">Forgot <a href="#">password?</a></span>
-    		</div>
-  		</form>
-	</div>
+<div>
+	<form action="/path/">
+			<button class="btn btn-primary">Register Complaint</button>
+</form>
+</div>
 
 				<!-- india image -->
 			</div>
 			<div class="col-lg-5 pt-5 text-center">
 				<!--col large 5 padding 5-->
-				<img src="./static/sawachh-bharat-is-hindi-meaning-clean-india-vector-31815320.jpeg"
+				<img src="/static/sawachh-bharat-is-hindi-meaning-clean-india-vector-31815320.jpeg"
 					class="img-fluid rounded-circle">
 				<!--img fluid for responsive-->
 			</div>
@@ -406,7 +338,7 @@ span.psw {
 						<div class="card mx-3">
 							<div class="card-body pb-5 text-center">
 								<h3 class="card-title">
-									<img src="./static/drainage.png" alt="" height="230" width="250">
+									<img src="/static/drainage.png" alt="" height="230" width="250">
 
 									<br>Drainage
 								</h3>
@@ -421,7 +353,7 @@ span.psw {
 						<div class="card mx-3">
 							<div class="card-body pb-5" style="text-align: center;">
 								<h3 class="card-title">
-									<img src="./static/garbage3d.webp" alt="" height="230" width="250">
+									<img src="/static/garbage3d.webp" alt="" height="230" width="250">
 
 									<br>Garbage
 								</h3>
@@ -436,7 +368,7 @@ span.psw {
 						<div class="card mx-3">
 							<div class="card-body pb-5" style="text-align: center;">
 								<h3 class="card-title">
-									<img src="./static/pothole.png" alt="" height="230" width="250">
+									<img src="/static/pothole.png" alt="" height="230" width="250">
 
 									<br>Pothole
 								</h3>
@@ -451,7 +383,7 @@ span.psw {
 						<div class="card mx-3">
 							<div class="card-body pb-5" style="text-align: center;">
 								<h3 class="card-title">
-									<img src="./static/street light1.jpeg" alt="" height="230" width="250">
+									<img src="/static/street light1.jpeg" alt="" height="230" width="250">
 
 									<br>Street Light
 								</h3>
@@ -466,7 +398,7 @@ span.psw {
 						<div class="card mx-3">
 							<div class="card-body pb-5" style="text-align: center;">
 								<h3 class="card-title">
-									<img src="./static/Public toilets.png" alt="" height="230" width="250">
+									<img src="/static/Public toilets.png" alt="" height="230" width="250">
 
 									<br>Public Toilet
 								</h3>

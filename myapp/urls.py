@@ -24,6 +24,6 @@ from myapp.views import imageUploadPage
 urlpatterns = [
     path("",views.index, name='home'),
     path("pred/",views.pred,name='pred'),
-    path("login/",views.login,name='login'),
-    path("path/",views.imageUploadPage,name='path')
+    path("path/",views.imageUploadPage,name='path'),
+    path("user/",views.user_login,name='logged_in'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

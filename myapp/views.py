@@ -7,8 +7,12 @@ import torch
 from torch.autograd import Variable
 from PIL import Image
 import torch.nn as nn
-from .forms import imageUploadForm
-from .models import imageUploadModel
+# from .forms import imageUploadForm
+from .forms import *
+# from .models import imageUploadModel
+from .models import *
+
+
 
 
 class ConvNet(nn.Module):
@@ -78,10 +82,11 @@ def imageUploadPage(request):
     if request.method == "POST":
         form = imageUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            img1 = form.cleaned_data.get("Upload_Image")
             imageUploadPage.img1 = form.cleaned_data.get("Upload_Image")
+            imageUploadPage.name = form.cleaned_data.get("Name")
+            imageUploadPage.last = form.cleaned_data.get("Last")
             obj = imageUploadModel.objects.create(
-                img=img1
+                img=imageUploadPage.img1
             )
             obj.save()
             return redirect(pred)
@@ -115,7 +120,12 @@ def pred(request):
     path = 'c:/Users/Ram/Desktop/E-complaint-notifier-Django/images\\'
     path += str(imageUploadPage.img1)
     output = pred_dict.get(path)
-    a = {"output": output}
+    if output == "Public Toilets":
+        output="PublicToilet"
+    a = {"output": output,
+         "firstname":"Ram",
+         "lastname":"Gite"
+         }
     return render(request, 'pred.html', a)
 
 
@@ -125,3 +135,7 @@ def login(request):
 
 def index(request):
     return render(request, 'index.html')
+
+def user_login(request):
+    return render(request,'index1.html')
+
