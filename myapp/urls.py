@@ -26,4 +26,5 @@ urlpatterns = [
     path("pred/",views.pred,name='pred'),
     path("path/",views.imageUploadPage,name='path'),
     path("user/",views.user_login,name='logged_in'),
+    path("admin1/",views.table_output,name='admin'),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

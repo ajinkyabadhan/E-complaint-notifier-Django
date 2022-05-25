@@ -12,7 +12,7 @@
   </head>
   <body>
     <h1>  The image uploaded is of : {{output}} type </h1>
-
+  <form action="/user/" method="get">
     <label>First Name :</label>
     <input type="textarea" value={{firstname}}> <br><br>
 
@@ -21,14 +21,13 @@
 
 
     <label>Categroy :</label>
-    <input type="textarea" value={{output}}> <br><br>
+    <input type="text" value={{output}}> <br><br>
 
 
-    <label>Location :</label>
+    <label for="location">Location :</label>
+    <input id = "location" type="text" name="location"><br><br>
 
-    <input type="textarea" value=SandipFoundation><br><br>
 
-    <form action="">
       <button type="submit">Submit</button>
     </form>
 

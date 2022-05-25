@@ -57,7 +57,7 @@ class ConvNet(nn.Module):
 
 def prediction(img_path, transformer, classes):
     device = torch.device("cpu")
-    checkpoint = torch.load('c:/Users\Ram/Desktop/E-complaint-notifier-Django/myapp/model/classification.model',
+    checkpoint = torch.load('c:/Users\Ram/Desktop/E-complaint-notifier-Django/myapp/model/classification2.model',
                             map_location='cpu')
 
     model = ConvNet(num_classes=3)
@@ -83,8 +83,6 @@ def imageUploadPage(request):
         form = imageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             imageUploadPage.img1 = form.cleaned_data.get("Upload_Image")
-            imageUploadPage.name = form.cleaned_data.get("Name")
-            imageUploadPage.last = form.cleaned_data.get("Last")
             obj = imageUploadModel.objects.create(
                 img=imageUploadPage.img1
             )
@@ -97,6 +95,7 @@ def imageUploadPage(request):
 
 
 pred_dict = {}
+location_dict = {}
 a = {}
 
 
@@ -119,12 +118,16 @@ def pred(request):
         pred_dict[i[i.rfind('/*') + 1:]] = prediction(i, transformer, classes)
     path = 'c:/Users/Ram/Desktop/E-complaint-notifier-Django/images\\'
     path += str(imageUploadPage.img1)
-    output = pred_dict.get(path)
-    if output == "Public Toilets":
-        output="PublicToilet"
-    a = {"output": output,
-         "firstname":"Ram",
-         "lastname":"Gite"
+    pred.output = pred_dict.get(path)
+    if pred.output == "Public Toilets":
+        pred.output="PublicToilet"
+    pred.fname = "Ram"
+    pred.lname = "Gite"
+
+    print(request.GET)
+    a = {"output": pred.output,
+         "firstname":pred.fname,
+         "lastname":pred.lname
          }
     return render(request, 'pred.html', a)
 
@@ -139,3 +142,17 @@ def index(request):
 def user_login(request):
     return render(request,'index1.html')
 
+
+list_details = []
+def table_output(request):
+    context={}
+    list_details.append(".")
+    list_details.append(pred.fname)
+    list_details.append(pred.lname)
+    list_details.append(imageUploadPage.img1)
+    list_details.append(pred.output)
+    list_details.append("Sandip Foundation Nasik")
+    context={
+        "data": list_details
+    }
+    return render(request,'admin.html',context)

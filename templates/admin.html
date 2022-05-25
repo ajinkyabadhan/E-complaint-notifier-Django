@@ -1,0 +1,9 @@
+{% load static %}
+<h1> in admin</h1>
+{% for i in data %}
+        {% if i == "." %}
+        <hr>
+        <br>
+        {% endif %}
+        &emsp;&emsp;&emsp;{{i}}
+{% endfor %}
